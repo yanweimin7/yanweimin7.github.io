@@ -7,17 +7,17 @@
   
   
   
-  <title>Hexo</title>
+  <title>wey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="wey">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="wey">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="wey">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="wey" type="application/atom+xml">
   
   
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/flutterchina/website@1.0/images/flutter-mark-square-100.png">
@@ -168,7 +168,7 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                                <a class="fl github"  target="_blank" href="https://github.com/yanweimin7" title="github">github</a>
                             
                                 <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
                             
@@ -180,7 +180,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <a href="/tags/flutter/" style="font-size: 10px;">flutter</a>
                     </div>
                 </section>
                 
@@ -224,7 +224,7 @@
             <nav class="header-nav">
                 <div class="social">
                     
-                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                        <a class="github" target="_blank" href="https://github.com/yanweimin7" title="github">github</a>
                     
                         <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
                     
@@ -236,6 +236,81 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-flutter内存泄露检测方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2021/01/01/flutter%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/" class="article-date">
+      <time datetime="2021-01-01T01:17:49.050Z" itemprop="datePublished">2021-01-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2021/01/01/flutter%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/">flutter内存泄露检测方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li>打开devTools , 链接类似如</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:49728&#x2F;#&#x2F;?ide&#x3D;Android-Studio&amp;uri&#x3D;http%253A%252F%252F127.0.0.1%253A55852%252F06aYEDuPk-Q%253D</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>取出uri 参数，做两次urlDecode ,得到原始路径,类似</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:55852&#x2F;06aYEDuPk-Q&#x3D;</span><br></pre></td></tr></table></figure></li>
+<li><p>在浏览器打开, 点击底部的 “allocation profile”, 记得点击GC后再查具体实例个数</p>
+</li>
+<li><p>在底部ctrl+F 查找具体类型，点击进去。 查找字符串 currently allocated count 点开 strongly, reachable会显示每个实例.</p>
+</li>
+<li><p>点击其中任何一个。进入该实例详情。 进入后点击 Retaining path，就能查到引用路径了。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-flutter采坑" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -278,6 +353,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -326,7 +405,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> image = <span class="keyword">await</span> loadImage(newFilePath);</span><br><span class="line">      <span class="keyword">final</span> textSize = fontSize * (image.width / data.size.width);</span><br><span class="line">      PictureRecorder recorder = PictureRecorder();</span><br><span class="line">      Canvas canvas = Canvas(recorder);</span><br><span class="line">      canvas.drawImage(image, Offset(<span class="number">0</span>, <span class="number">0</span>), Paint());</span><br><span class="line">      &lt;!-- more--&gt;</span><br><span class="line">      TextPainter(</span><br><span class="line">          text: TextSpan(</span><br><span class="line">              text: text,</span><br><span class="line">              style: TextStyle(color: Colors.red, fontSize: textSize)),</span><br><span class="line">          textAlign: TextAlign.center,</span><br><span class="line">          textDirection: TextDirection.ltr)</span><br><span class="line">        ..layout(</span><br><span class="line">            maxWidth: image.width.toDouble() - offsetXRatio * image.width,</span><br><span class="line">            minWidth: <span class="number">0</span>)</span><br><span class="line">        ..paint(canvas,</span><br><span class="line">            Offset(offsetXRatio * image.width, offsetYRatio * image.height));</span><br><span class="line">      <span class="keyword">final</span> imageObj =</span><br><span class="line">          <span class="keyword">await</span> recorder.endRecording().toImage(image.width, image.height);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 压缩，保存文件</span></span><br><span class="line">      <span class="keyword">final</span> byteData = <span class="keyword">await</span> imageObj.toByteData();</span><br><span class="line">      <span class="keyword">final</span> im = gimage.Image.fromBytes(</span><br><span class="line">          image.width, image.height, byteData.buffer.asUint8List());</span><br><span class="line">      <span class="built_in">List</span>&lt;<span class="built_in">int</span>&gt; byteList;</span><br><span class="line">      <span class="keyword">if</span> (path.endsWith(<span class="string">&quot;png&quot;</span>)) &#123;</span><br><span class="line">        byteList = gimage.encodePng(im);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        byteList = gimage.encodeJpg(im, quality: <span class="number">80</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (overwrite) &#123;</span><br><span class="line">        <span class="keyword">await</span> File(path).writeAsBytes(byteList);</span><br><span class="line">        <span class="keyword">return</span> path;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> image = <span class="keyword">await</span> loadImage(newFilePath);</span><br><span class="line"><span class="keyword">final</span> textSize = fontSize * (image.width / data.size.width);</span><br><span class="line">PictureRecorder recorder = PictureRecorder();</span><br><span class="line">Canvas canvas = Canvas(recorder);</span><br><span class="line">canvas.drawImage(image, Offset(<span class="number">0</span>, <span class="number">0</span>), Paint());</span><br><span class="line">TextPainter(</span><br><span class="line">    text: TextSpan(</span><br><span class="line">        text: text,</span><br><span class="line">        style: TextStyle(color: Colors.red, fontSize: textSize)),</span><br><span class="line">    textAlign: TextAlign.center,</span><br><span class="line">    textDirection: TextDirection.ltr)</span><br><span class="line">  ..layout(</span><br><span class="line">      maxWidth: image.width.toDouble() - offsetXRatio * image.width,</span><br><span class="line">      minWidth: <span class="number">0</span>)</span><br><span class="line">  ..paint(canvas,</span><br><span class="line">      Offset(offsetXRatio * image.width, offsetYRatio * image.height));</span><br><span class="line"><span class="keyword">final</span> imageObj =</span><br><span class="line">    <span class="keyword">await</span> recorder.endRecording().toImage(image.width, image.height);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩，保存文件</span></span><br><span class="line"><span class="keyword">final</span> byteData = <span class="keyword">await</span> imageObj.toByteData();</span><br><span class="line"><span class="keyword">final</span> im = gimage.Image.fromBytes(</span><br><span class="line">    image.width, image.height, byteData.buffer.asUint8List());</span><br><span class="line"><span class="built_in">List</span>&lt;<span class="built_in">int</span>&gt; byteList;</span><br><span class="line"><span class="keyword">if</span> (path.endsWith(<span class="string">&quot;png&quot;</span>)) &#123;</span><br><span class="line">  byteList = gimage.encodePng(im);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  byteList = gimage.encodeJpg(im, quality: <span class="number">80</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (overwrite) &#123;</span><br><span class="line">  <span class="keyword">await</span> File(path).writeAsBytes(byteList);</span><br><span class="line">  <span class="keyword">return</span> path;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -335,6 +414,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -387,7 +470,7 @@
 <li>一个Navigator 对应一个 RouteObserver</li>
 <li>每个RouteObserver可以subscribe每个页面的push、pop变化</li>
 </ul>
-<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_boost/flutter_boost.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_router/src/lifecycle.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_router/src/page_result_mediator.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="built_in">Map</span>&lt;NavigatorState, RouteObserver&lt;PageRoute&gt;&gt; navigatorObserverMap = &#123;&#125;;</span><br><span class="line">&lt;!-- more--&gt;</span><br><span class="line"><span class="keyword">mixin</span> HLStateWithLifecycle&lt;T <span class="keyword">extends</span> StatefulWidget&gt; <span class="keyword">on</span> State&lt;T&gt; <span class="keyword">implements</span> RouteAware,LifeCycle &#123;</span><br><span class="line">  NavigatorState _curNavigatorState;</span><br><span class="line">  ModalRoute _modalRoute;</span><br><span class="line">  VoidCallback _boostObserverCallback; <span class="comment">//boost 监听器移除回调</span></span><br><span class="line">  ContainerLifeCycle _lastContainerState; <span class="comment">//最后的容器状态，只在boost容器中有效。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  T <span class="keyword">get</span> widget =&gt; <span class="keyword">super</span>.widget;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line"></span><br><span class="line">    WidgetsBinding.instance.addPostFrameCallback((_) &#123;</span><br><span class="line">      onCreate();</span><br><span class="line">      _curNavigatorState = Navigator.of(context);</span><br><span class="line">      _modalRoute = ModalRoute.of(context);</span><br><span class="line">      _createOrGetRouteObserver().subscribe(<span class="keyword">this</span>, _modalRoute);</span><br><span class="line">      <span class="keyword">if</span> (_curNavigatorState <span class="keyword">is</span> BoostContainerState) &#123;</span><br><span class="line">        <span class="comment">//如果在flutterBoost的navigator中</span></span><br><span class="line">        _registerFlutterBoostLifeCycle();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  RouteObserver&lt;PageRoute&gt; _createOrGetRouteObserver() &#123;</span><br><span class="line">    <span class="keyword">var</span> observer = navigatorObserverMap[_curNavigatorState];</span><br><span class="line">    <span class="keyword">if</span> (observer == <span class="keyword">null</span>) &#123;</span><br><span class="line">      observer = RouteObserver&lt;PageRoute&gt;();</span><br><span class="line">      navigatorObserverMap[_curNavigatorState] = observer;</span><br><span class="line">      _curNavigatorState.widget.observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> observer;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _registerFlutterBoostLifeCycle() &#123;</span><br><span class="line">    <span class="keyword">final</span> BoostContainerState state = _curNavigatorState;</span><br><span class="line">    _boostObserverCallback = state.addLifeCycleObserver((state, settings) &#123;</span><br><span class="line">      _lastContainerState = state;</span><br><span class="line">      <span class="keyword">if</span> (ModalRoute.of(context).isCurrent) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">          <span class="keyword">case</span> ContainerLifeCycle.Disappear:</span><br><span class="line">            onPause();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> ContainerLifeCycle.Appear:</span><br><span class="line">            onResume();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didChangeDependencies() &#123;</span><br><span class="line">    <span class="keyword">super</span>.didChangeDependencies();</span><br><span class="line">    _modalRoute = ModalRoute.of(context);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> oldNavigatorState = _curNavigatorState;</span><br><span class="line">    <span class="keyword">if</span> (oldNavigatorState != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">final</span> oldObserver =</span><br><span class="line">          navigatorObserverMap[oldNavigatorState]; <span class="comment">//获取老的 state &amp; observer</span></span><br><span class="line">      oldNavigatorState.widget.observers.remove(oldObserver);</span><br><span class="line">      navigatorObserverMap.remove(oldNavigatorState); <span class="comment">//移除老的state</span></span><br><span class="line"></span><br><span class="line">      _curNavigatorState = Navigator.of(context);</span><br><span class="line">      navigatorObserverMap[_curNavigatorState] =</span><br><span class="line">          oldObserver; <span class="comment">//将老的observer保存到新的state中</span></span><br><span class="line">      <span class="keyword">final</span> newObserver = navigatorObserverMap[_curNavigatorState];</span><br><span class="line">      _curNavigatorState.widget.observers</span><br><span class="line">          .add(newObserver); <span class="comment">//将observer添加到navigator的observers中。</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    _unsubscribe();</span><br><span class="line">    onDestroy();</span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _unsubscribe() &#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">final</span> observer = navigatorObserverMap[_curNavigatorState];</span><br><span class="line">    observer?.unsubscribe(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">if</span> (_boostObserverCallback != <span class="keyword">null</span>) &#123;</span><br><span class="line">      _boostObserverCallback();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (_modalRoute.isFirst) &#123;</span><br><span class="line">      <span class="comment">// navigator的第一个页面关闭时，如果是boost，在上面的addLifeCycleObserver中会调用onPause，这里就不再重复调用</span></span><br><span class="line">      <span class="keyword">if</span> (_lastContainerState != ContainerLifeCycle.Disappear &amp;&amp;</span><br><span class="line">          _lastContainerState != ContainerLifeCycle.Destroy) &#123;</span><br><span class="line">        onPause();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//整个navigator要被关闭了，注销navigator级别的监听器</span></span><br><span class="line">      _curNavigatorState.widget.observers.remove(observer);</span><br><span class="line">      navigatorObserverMap.remove(_curNavigatorState);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPush() &#123;</span><br><span class="line">    onResume();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPushNext() &#123;</span><br><span class="line">    onPause();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPopNext() &#123;</span><br><span class="line">    onResume();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPop() &#123;</span><br><span class="line">    onPause();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onCreate() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onResume() &#123;&#125;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onPause() &#123;&#125;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onDestroy() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_boost/flutter_boost.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_router/src/lifecycle.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_router/src/page_result_mediator.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="built_in">Map</span>&lt;NavigatorState, RouteObserver&lt;PageRoute&gt;&gt; navigatorObserverMap = &#123;&#125;;</span><br><span class="line"><span class="keyword">mixin</span> HLStateWithLifecycle&lt;T <span class="keyword">extends</span> StatefulWidget&gt; <span class="keyword">on</span> State&lt;T&gt; <span class="keyword">implements</span> RouteAware,LifeCycle &#123;</span><br><span class="line">  NavigatorState _curNavigatorState;</span><br><span class="line">  ModalRoute _modalRoute;</span><br><span class="line">  VoidCallback _boostObserverCallback; <span class="comment">//boost 监听器移除回调</span></span><br><span class="line">  ContainerLifeCycle _lastContainerState; <span class="comment">//最后的容器状态，只在boost容器中有效。</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  T <span class="keyword">get</span> widget =&gt; <span class="keyword">super</span>.widget;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line"></span><br><span class="line">    WidgetsBinding.instance.addPostFrameCallback((_) &#123;</span><br><span class="line">      onCreate();</span><br><span class="line">      _curNavigatorState = Navigator.of(context);</span><br><span class="line">      _modalRoute = ModalRoute.of(context);</span><br><span class="line">      _createOrGetRouteObserver().subscribe(<span class="keyword">this</span>, _modalRoute);</span><br><span class="line">      <span class="keyword">if</span> (_curNavigatorState <span class="keyword">is</span> BoostContainerState) &#123;</span><br><span class="line">        <span class="comment">//如果在flutterBoost的navigator中</span></span><br><span class="line">        _registerFlutterBoostLifeCycle();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  RouteObserver&lt;PageRoute&gt; _createOrGetRouteObserver() &#123;</span><br><span class="line">    <span class="keyword">var</span> observer = navigatorObserverMap[_curNavigatorState];</span><br><span class="line">    <span class="keyword">if</span> (observer == <span class="keyword">null</span>) &#123;</span><br><span class="line">      observer = RouteObserver&lt;PageRoute&gt;();</span><br><span class="line">      navigatorObserverMap[_curNavigatorState] = observer;</span><br><span class="line">      _curNavigatorState.widget.observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> observer;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _registerFlutterBoostLifeCycle() &#123;</span><br><span class="line">    <span class="keyword">final</span> BoostContainerState state = _curNavigatorState;</span><br><span class="line">    _boostObserverCallback = state.addLifeCycleObserver((state, settings) &#123;</span><br><span class="line">      _lastContainerState = state;</span><br><span class="line">      <span class="keyword">if</span> (ModalRoute.of(context).isCurrent) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">          <span class="keyword">case</span> ContainerLifeCycle.Disappear:</span><br><span class="line">            onPause();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> ContainerLifeCycle.Appear:</span><br><span class="line">            onResume();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didChangeDependencies() &#123;</span><br><span class="line">    <span class="keyword">super</span>.didChangeDependencies();</span><br><span class="line">    _modalRoute = ModalRoute.of(context);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> oldNavigatorState = _curNavigatorState;</span><br><span class="line">    <span class="keyword">if</span> (oldNavigatorState != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">final</span> oldObserver =</span><br><span class="line">          navigatorObserverMap[oldNavigatorState]; <span class="comment">//获取老的 state &amp; observer</span></span><br><span class="line">      oldNavigatorState.widget.observers.remove(oldObserver);</span><br><span class="line">      navigatorObserverMap.remove(oldNavigatorState); <span class="comment">//移除老的state</span></span><br><span class="line"></span><br><span class="line">      _curNavigatorState = Navigator.of(context);</span><br><span class="line">      navigatorObserverMap[_curNavigatorState] =</span><br><span class="line">          oldObserver; <span class="comment">//将老的observer保存到新的state中</span></span><br><span class="line">      <span class="keyword">final</span> newObserver = navigatorObserverMap[_curNavigatorState];</span><br><span class="line">      _curNavigatorState.widget.observers</span><br><span class="line">          .add(newObserver); <span class="comment">//将observer添加到navigator的observers中。</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    _unsubscribe();</span><br><span class="line">    onDestroy();</span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _unsubscribe() &#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">final</span> observer = navigatorObserverMap[_curNavigatorState];</span><br><span class="line">    observer?.unsubscribe(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">if</span> (_boostObserverCallback != <span class="keyword">null</span>) &#123;</span><br><span class="line">      _boostObserverCallback();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (_modalRoute.isFirst) &#123;</span><br><span class="line">      <span class="comment">// navigator的第一个页面关闭时，如果是boost，在上面的addLifeCycleObserver中会调用onPause，这里就不再重复调用</span></span><br><span class="line">      <span class="keyword">if</span> (_lastContainerState != ContainerLifeCycle.Disappear &amp;&amp;</span><br><span class="line">          _lastContainerState != ContainerLifeCycle.Destroy) &#123;</span><br><span class="line">        onPause();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//整个navigator要被关闭了，注销navigator级别的监听器</span></span><br><span class="line">      _curNavigatorState.widget.observers.remove(observer);</span><br><span class="line">      navigatorObserverMap.remove(_curNavigatorState);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPush() &#123;</span><br><span class="line">    onResume();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPushNext() &#123;</span><br><span class="line">    onPause();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPopNext() &#123;</span><br><span class="line">    onResume();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didPop() &#123;</span><br><span class="line">    onPause();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onCreate() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onResume() &#123;&#125;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onPause() &#123;&#125;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> onDestroy() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -398,6 +481,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -424,7 +511,7 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2021 John Doe
+                &copy; 2021 wey
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
