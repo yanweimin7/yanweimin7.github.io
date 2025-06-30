@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示当前URL</title>
+</head>
+<body>
+    <h1>当前页面的URL是：</h1>
+    <h5 id="currentUrl"></h5>
+
+    <script>
+        // 获取当前URL并显示在h5元素中
+        document.getElementById('currentUrl').textContent = window.location.href;
+    </script>
+</body>
+</html>
